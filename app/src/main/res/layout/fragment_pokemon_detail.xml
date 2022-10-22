@@ -76,31 +76,46 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvStat"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginTop="20dp"
         android:overScrollMode="never"
-        tools:listitem="@layout/item_stat"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="4"
+        android:paddingBottom="200dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPokemonName">
 
-    <Button
-        android:id="@+id/btnRelease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Release"
-        android:background="@drawable/shape_chip"
-        app:backgroundTint="@color/red_700"
-        app:layout_constraintStart_toStartOf="@+id/rvStat"
-        app:layout_constraintTop_toBottomOf="@+id/rvStat" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_stat" />
+
+            <Button
+                android:id="@+id/btnRelease"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shape_chip"
+                android:text="Release"
+                app:backgroundTint="@color/red_700" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/btnCatch"
